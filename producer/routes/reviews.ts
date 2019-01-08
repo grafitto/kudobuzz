@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express';
-import { Slave } from '../core/slave';
 
 export const Reviews: Router = Router();
 

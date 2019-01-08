@@ -1,20 +1,20 @@
 import amqp, { Message } from 'amqplib/callback_api';
 import mongoose from 'mongoose';
-import { Aggregator, Validator } from './core/controllers';
+import { Aggregator } from './core/controllers';
 
 const settings = {
     amqpUrl: process.env.AMQP_QUEUE || 'amqp://localhost',
     queue: process.env.AMQP_QUEUE || 'kb-new-review-topic',
     mongoUrl: process.env.SLAVE_MONGODB_URL || 'mongodb://localhost:27017/',
     dbPrefix: process.env.SLAVE_MONGODB_PREFIX || 'kudobuzz_',
-    dbName: process.env.SLAVE_MONGODB_NAME || 'reviews'
+    dbName: process.env.SLAVE_MONGODB_NAME || 'aggregates'
 }
 
 //Connect to the DB
 mongoose.connect(settings.mongoUrl + settings.dbPrefix + settings.dbName, { useNewUrlParser: true });
 
 //Power up the aggregator
-const aggregator: Aggregator = new Aggregator(new Validator());
+const aggregator: Aggregator = new Aggregator();
 
 amqp.connect(settings.amqpUrl, (err:any, connection: amqp.Connection) => {
     if(err) {
@@ -29,8 +29,10 @@ amqp.connect(settings.amqpUrl, (err:any, connection: amqp.Connection) => {
                 channel.consume(settings.queue, (msg: Message | null) => {
                     if(msg) {
                         aggregator.handle(JSON.parse(msg.content.toString())).then((res: any) => {
+                            console.log('Message consumed successfully!');
                             channel.ack(msg);
                         }).catch((err: any) => {
+                            console.error(err.message);
                             channel.nack(msg);
                         });
                     }

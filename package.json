@@ -18,8 +18,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "serve:master": "yarn build && node build/producer/server.js",
+    "serve:producer": "yarn build && node build/producer/server.js",
     "serve:server": "yarn build && node build/server/server.js",
-    "serve:slave": "yarn build && node build/consumer/server.js"
+    "serve:consumer": "yarn build && node build/consumer/server.js"
   }
 }
