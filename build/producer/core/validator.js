@@ -18,7 +18,7 @@ var Validator = /** @class */ (function () {
             throw new Error('Types should be a string containing \'product\' or \'site\'');
         }
         if (typeof review.rating !== 'number' || review.rating < 1 || review.rating > 5) {
-            throw new Error('Rating mist be a number');
+            throw new Error('Rating must be a number');
         }
     };
     return Validator;

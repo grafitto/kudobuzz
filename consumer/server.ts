@@ -1,13 +1,13 @@
 import amqp, { Message } from 'amqplib/callback_api';
 import mongoose from 'mongoose';
-import { Aggregator } from './core/controllers';
+import { Aggregator } from './core';
 
 const settings = {
     amqpUrl: process.env.AMQP_QUEUE || 'amqp://localhost',
     queue: process.env.AMQP_QUEUE || 'kb-new-review-topic',
-    mongoUrl: process.env.SLAVE_MONGODB_URL || 'mongodb://localhost:27017/',
-    dbPrefix: process.env.SLAVE_MONGODB_PREFIX || 'kudobuzz_',
-    dbName: process.env.SLAVE_MONGODB_NAME || 'aggregates'
+    mongoUrl: process.env.MONGODB_URL || 'mongodb://localhost:27017/',
+    dbPrefix: process.env.MONGODB_PREFIX || 'kudobuzz_',
+    dbName: process.env.MONGODB_NAME || 'aggregates'
 }
 
 //Connect to the DB

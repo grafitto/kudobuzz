@@ -1,5 +1,5 @@
-import { IReview } from "../../types";
-import { Aggregate } from "../schemas";
+import { IReview } from "../types";
+import { Aggregate } from "../../schemas";
 
 export class Aggregator {
 
