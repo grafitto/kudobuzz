@@ -1,0 +1,23 @@
+{
+  "name": "kudobuzz",
+  "version": "1.0.0",
+  "description": "Interview challenge",
+  "main": "index.js",
+  "author": "Kevin Nderitu",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.3.7",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.2",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "serve:master": "node build/master/server.js",
+    "serve:server": "node build/server/server.js",
+    "serve:slave": "node build/slave/server.js"
+  }
+}
