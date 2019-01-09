@@ -103,6 +103,10 @@ Assuming default server port (3002)
 }
 ```
 
+### **Tests**
+
+To run tests, use `yarn test` or `yarn test:w` to watch changes.
+
 
 
 
