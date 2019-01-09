@@ -20,6 +20,12 @@
     "build": "tsc",
     "serve:producer": "yarn build && node build/producer/server.js",
     "serve:server": "yarn build && node build/server/server.js",
-    "serve:consumer": "yarn build && node build/consumer/server.js"
+    "serve:consumer": "yarn build && node build/consumer/server.js",
+    "test": "jest",
+    "test:w": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "ts-jest": "^23.10.5"
   }
 }

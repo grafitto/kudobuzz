@@ -7,8 +7,7 @@ export class Aggregates {
         if(doc) {
             return this.formatAggregate(doc);
         }
-        console.error('Not found!');
-        throw new Error('Doc not found');
+        throw new Error('Aggregate not found');
     }
 
     private formatAggregate(doc: any): IAggregate {
